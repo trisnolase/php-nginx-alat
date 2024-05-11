@@ -1,0 +1,46 @@
+services:
+  nginx:
+    container_name: nginx
+    build: ./nginx/
+    ports:
+      - 83:80
+  
+    volumes:
+      - ./app/:/var/www/html/
+
+    networks:
+      - alat
+
+  php:
+    container_name: php
+    build: ./app/
+    expose:
+      - 9000
+    volumes:
+      - ./app/:/var/www/html/
+
+    networks:
+      - alat
+  db:
+    image: mariadb:10.11
+    container_name: mdb1011
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: mariadb
+      MYSQL_DATABASE: dbinventarisperalatan
+      MYSQL_USER: alat
+      MYSQL_PASSWORD: mypass
+    ports:
+      - "3308:3306"
+    volumes:
+    - mdb-data:/var/lib/mysql
+    
+    networks:
+      - alat
+
+volumes:
+  mdb-data:
+
+networks:
+  alat:
+    driver: bridge
