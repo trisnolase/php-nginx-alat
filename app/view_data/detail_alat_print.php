@@ -13,7 +13,7 @@ if ($sesi == "admin") {
 			Sistem Informasi Inventaris Peralatan Jaringan
 		</title>
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-		<link href="assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+		<link href="../assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
 		<style>
 			body {
 				background-color: #fff !important;
@@ -76,7 +76,7 @@ if ($sesi == "admin") {
 							<table class='table table-hover'>
 								<tr>
 									<td class='align-top w-25' rowspan='7'>
-										<img src='view_data/prod_img/<?php echo $xxtampil ?>' width='100%'>
+										<img src='../view_data/prod_img/<?php echo $xxtampil ?>' width='100%'>
 									</td>
 									<td width="200px">Id Alat</td>
 									<td>: <?php echo $xid ?></td>
