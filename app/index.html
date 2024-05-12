@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Login</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="assets/login/css/style.css">
+	<link rel="stylesheet" href="assets/fontawesome4/css/font-awesome.min.css">
+
+</head>
+
+<body class="img js-fullheight" style="background-image: url(assets/login/images/bg.jpg);">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+						<form action="control_data/proses_db_login.php?modul=login&act=cek" method="POST">
+							<div class="form-group">
+								<input type="text" name="nama" class="form-control" placeholder="Nama">
+							</div>
+							<div class="form-group">
+								<input id="password-field" name="password" type="password" class="form-control"
+									placeholder="Password">
+								<span toggle="#password-field"
+									class="fa fa-fw fa-eye field-icon toggle-password"></span>
+							</div>
+							<div class="form-group">
+								<input type="submit" Value="Sign In" class="form-control btn btn-primary submit px-3">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="assets/login/js/jquery.min.js"></script>
+	<script src="assets/login/js/main.js"></script>
+
+</body>
+
+</html>
