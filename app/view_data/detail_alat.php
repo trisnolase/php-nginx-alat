@@ -99,16 +99,16 @@ if ($sesi == "admin") {
 							</tr>
 							<tr>
 								<td colspan='2' class="text-left">
-									<a href='printdata-<?php echo $xkode ?>' target='_BLANK' class='btn btn-success btn-sm'>Print /
+									<a href='view_data/detail_alat_print.php?idp=<?php echo $xkode ?>' target='_BLANK' class='btn btn-success btn-sm'>Print /
 										Download</a>
 								</td>
 								<td colspan='3' class="text-right">
 									<?php if ($xstatus == 'Normal') { ?>
-										<a href='alat-1' class='btn btn-primary btn-sm'>Kembali</a>
+										<a href='dashboard.php?xlink=view_data/data_alat.php&apage=alat&act=1' class='btn btn-primary btn-sm'>Kembali</a>
 									<?php } elseif ($xstatus == 'Rusak Sementara') { ?>
-										<a href='alat-2' class='btn btn-primary btn-sm'>Kembali</a>
+										<a href='dashboard.php?xlink=view_data/data_alat.php&apage=alat&act=2' class='btn btn-primary btn-sm'>Kembali</a>
 									<?php } else { ?>
-										<a href='alat-3' class='btn btn-primary btn-sm'>Kembali</a>
+										<a href='dashboard.php?xlink=view_data/data_alat.php&apage=alat&act=3' class='btn btn-primary btn-sm'>Kembali</a>
 									<?php } ?>
 								</td>
 							</tr>

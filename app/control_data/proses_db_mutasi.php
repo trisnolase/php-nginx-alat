@@ -20,7 +20,7 @@ if ($sesi == "admin") {
 		mysqli_query($dblink, "update tblalat set id_lokasi='$xxlb' WHERE id_alat='$xkid'");
 		mysqli_query($dblink, "insert into tblhistorilokasi(id_alat,id_lokasi_a,id_lokasi_b,tgl) values('$_POST[xnama]','$xidk','$_POST[xlb]','$tanggal')");
 
-		header("Location:../mutasi");
+		header("Location:../../dashboard.php?xlink=view_data/mutasi_alat.php&apage=mutasi");
 	} else {
 		echo "<center>Tidak Ada Modul</center>";
 	}

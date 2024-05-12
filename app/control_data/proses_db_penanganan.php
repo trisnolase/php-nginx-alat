@@ -26,7 +26,7 @@ if ($sesi == "admin") {
 		mysqli_query($dblink, "update tblalat set status_alat='$_POST[xhasil]' where id_alat='$xxid'");
 		mysqli_query($dblink, "update tblgangguan set status='$xstat' where id_gangguan='$xgid'");
 
-		header("Location:../penanganan");
+		header("Location:../../dashboard.php?xlink=view_data/penanganan.php&apage=penanganan");
 	} else {
 		echo "<center>Tidak Ada Modul</center>";
 	}

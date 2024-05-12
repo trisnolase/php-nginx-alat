@@ -8,19 +8,17 @@ $jam = date("H:i:s");
 if ($modul == 'login' and $act == 'cek') {
     $logCek = mysqli_query($dblink, "select * from tbllogin where nama='$_POST[nama]' and password='$_POST[password]'");
     if (mysqli_num_rows($logCek) > 0) {
-        // $r = mysqli_fetch_array($logCek, MYSQLI_ASSOC);
         $row = mysqli_fetch_assoc($logCek);
         $_SESSION['nama'] = isset($row['nama']) ? $row['nama'] : '';
         $_SESSION['role'] = isset($row['role']) ? $row['role'] : '';
-        // echo $_SESSION['role'];
-        header("Location:alat-1");
+        header("Location:../dashboard.php?xlink=view_data/data_alat.php&apage=alat&act=1");
     } else {
-        header("Location:login");
+        header("Location:../");
     }
 }
 if ($modul == 'logout' and $act == 'cek') {
     session_destroy();
-    header("Location:login");
+    header("Location:../");
 } else {
     echo "<center>Tidak Ada Modul</center>";
 }

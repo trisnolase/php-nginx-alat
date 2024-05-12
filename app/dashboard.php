@@ -35,54 +35,54 @@ $hal = $_GET['apage'];
         
         Tip 2: you can also add an image using data-image tag
       -->
-      <div class="logo"><a href="homepage" class="simple-text logo-normal">
+      <div class="logo"><a href="dashboard.php?xlink=view_data/home.php" class="simple-text logo-normal">
           Inventaris Peralatan
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li <?php if ($hal == 'alat') echo "class='nav-item active'"; ?>>
-            <a class="nav-link" href="alat-1">
+            <a class="nav-link" href="dashboard.php?xlink=view_data/data_alat.php&apage=alat&act=1">
               <i class="material-icons">library_books</i>
               <p>Data Alat</p>
             </a>
           </li>
           <li <?php if ($hal == 'kategori') echo "class='nav-item active'"; ?>>
-            <a class="nav-link" href="kategori">
+            <a class="nav-link" href="dashboard.php?xlink=view_data/kategori.php&apage=kategori">
               <i class="material-icons">category</i>
               <p>Kategori</p>
             </a>
           </li>
           </li>
           <li <?php if ($hal == 'lokasi') echo "class='nav-item active'"; ?>>
-            <a class="nav-link" href="lokasi">
+            <a class="nav-link" href="dashboard.php?xlink=view_data/lokasi.php&apage=lokasi">
               <i class="material-icons">location_ons</i>
               <p>Lokasi</p>
             </a>
           </li>
           </li>
           <li <?php if ($hal == 'gangguan') echo "class='nav-item active'"; ?>>
-            <a class="nav-link" href="gangguan">
+            <a class="nav-link" href="dashboard.php?xlink=view_data/gangguan.php&apage=gangguan">
               <i class="material-icons">report</i>
               <p>Gangguan</p>
             </a>
           </li>
           </li>
           <li <?php if ($hal == 'penanganan') echo "class='nav-item active'"; ?>>
-            <a class="nav-link" href="penanganan">
+            <a class="nav-link" href="dashboard.php?xlink=view_data/penanganan.php&apage=penanganan">
               <i class="material-icons">assignment</i>
               <p>Penanganan</p>
             </a>
           </li>
           </li>
           <li <?php if ($hal == 'lapor') echo "class='nav-item active'"; ?>>
-            <a class="nav-link" href="lapor">
+            <a class="nav-link" href="dashboard.php?xlink=view_data/lapor_alat.php&apage=lapor">
               <i class="material-icons">comment</i>
               <p>Lapor Gangguan</p>
             </a>
           </li>
           </li>
           <li <?php if ($hal == 'mutasi') echo "class='nav-item active'"; ?>>
-            <a class="nav-link" href="mutasi">
+            <a class="nav-link" href="dashboard.php?xlink=view_data/mutasi_alat.php&apage=mutasi">
               <i class="material-icons">cached</i>
               <p>Mutasi</p>
             </a>
@@ -101,7 +101,7 @@ $hal = $_GET['apage'];
             <span class="navbar-toggler-icon icon-bar"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end">
-            <form class="navbar-form" method="POST" action="caridata">
+            <form class="navbar-form" method="POST" action="dashboard.php?xlink=view_data/pencarian.php">
               <div class="input-group no-border">
                 <input type="text" name="cari" class="form-control" placeholder="Search...">
                 <button type="submit" class="btn btn-default btn-round btn-just-icon">
@@ -135,7 +135,7 @@ $hal = $_GET['apage'];
                   if ($xjumlah == '0') {
                     echo "<a class='dropdown-item' href=''>Tidak Ada Laporan Gangguan Terbaru</a>";
                   } else {
-                    echo "<a class='dropdown-item' href='gangguan'><b> $xjumlah </b>&nbsp; Peralatan Rusak Belum Diproses</a>";
+                    echo "<a class='dropdown-item' href='dashboard.php?xlink=view_data/gangguan.php&apage=gangguan'><b> $xjumlah </b>&nbsp; Peralatan Rusak Belum Diproses</a>";
                   }
                   ?></div>
               </li>
@@ -146,7 +146,7 @@ $hal = $_GET['apage'];
                   </p>
                 </a>
                 <div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'>
-                  <a class='dropdown-item' href="logout">Log Out</a>
+                  <a class='dropdown-item' href="control_data/proses_db_login.php?modul=logout&act=cek">Log Out</a>
                 </div>
               </li>
             </ul>

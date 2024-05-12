@@ -12,7 +12,7 @@ if ($sesi == "admin") {
 	$xstat = "B";
 	$nama = $_POST['nama_alat'];
 	if ($nama == "") {
-		header("Location:../lapor");
+		header("Location:../../dashboard.php?xlink=view_data/lapor_alat.php&apage=lapor");
 	} else {
 		mysqli_query($dblink, "insert into tblgangguan(id_alat,tgl_gangguan,ciri,deskripsi_gangguan,status) values('$_POST[nama_alat]',
 									'$tanggal',
@@ -20,7 +20,7 @@ if ($sesi == "admin") {
 									'$_POST[deskripsi_kerusakan]',
 									'$xstat')");
 		mysqli_query($dblink, "update tblalat set status_alat='$xrs' where id_alat='$_POST[nama_alat]'");
-		header("Location:../gangguan");
+		header("Location:../../dashboard.php?xlink=view_data/gangguan.php&apage=gangguan");
 	}
 ?>
 <?php } else {

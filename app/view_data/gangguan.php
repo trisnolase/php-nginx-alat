@@ -69,7 +69,7 @@ if ($sesi == "admin") {
 									<td><?php echo $xstatus ?></td>
 									<td class="text-center">
 										<?php if ($xsts <> 'S') {
-											echo "<a href='statusalat-$xidk' class='btn btn-danger btn-sm'>Ubah Status</a>";
+											echo "<a href='dashboard.php?xlink=view_data/tambah/tambah_penanganan.php&apage=gangguan&id=$xidk' class='btn btn-danger btn-sm'>Ubah Status</a>";
 										} else {
 											echo "<i class='material-icons text-success'>check</i>";
 										} ?>
@@ -85,7 +85,7 @@ if ($sesi == "admin") {
 						<ul class="pagination">
 							<li class="page-item">
 								<a class="page-link mr-1" <?php if ($halaman > 1) {
-																echo "href='gpage-$previous'";
+																echo "href='dashboard.php?xlink=view_data/gangguan.php&apage=gangguan&halaman=$previous'";
 															} ?>>Previous</a>
 							</li>
 							<?php
@@ -95,13 +95,13 @@ if ($sesi == "admin") {
 									$active = "active";
 								}
 							?>
-								<li class="page-item <?php echo $active ?>"><a class="page-link mr-1" href="gpage-<?php echo $x ?>"><?php echo $x; ?></a></li>
+								<li class="page-item <?php echo $active ?>"><a class="page-link mr-1" href="dashboard.php?xlink=view_data/gangguan.php&apage=gangguan&halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
 							<?php
 							}
 							?>
 							<li class="page-item">
 								<a class="page-link" <?php if ($halaman < $total_halaman) {
-															echo "href='gpage-$next'";
+															echo "href='dashboard.php?xlink=view_data/gangguan.php&apage=gangguan&halaman=$next'";
 														} ?>>Next</a>
 							</li>
 						</ul>

@@ -5,7 +5,7 @@ if ($sesi == "admin") {
 	<div class='col-md-12'>
 		<div class='card'>
 			<div class='card-body'>
-				<a class='btn btn-success btn-sm' href='tambahlokasi'>Tambah Data lokasi</a>
+				<a class='btn btn-success btn-sm' href='dashboard.php?xlink=view_data/tambah/tambah_lokasi.php&apage=lokasi'>Tambah Data lokasi</a>
 			</div>
 		</div>
 	</div>
@@ -40,12 +40,12 @@ if ($sesi == "admin") {
 									<td><?php echo $xnk ?></td>
 									<td class="text-center"><?php echo $xjlh ?></td>
 									<td class='td-actions text-center' style="width:96px;">
-										<a class='btn btn-danger btn-sm' href='hapuslok-<?php echo $xidk ?>'>
+										<a class='btn btn-danger btn-sm' href='control_data/proses_db_lokasi.php?modul=lokasi&act=hapus&xxid=<?php echo $xidk ?>'>
 											<button type='button' rel='tooltip' title='Remove' class='btn btn-white btn-link btn-sm'>
 												<i class='material-icons'>close</i>
 											</button>
 										</a>
-										<a class='btn btn-primary btn-sm' href='editlok-<?php echo $xidk ?>'>
+										<a class='btn btn-primary btn-sm' href='dashboard.php?xlink=view_data/edit/edit_lokasi.php&apage=lokasi&mod=edit&id=<?php echo $xidk ?>'>
 											<button type='button' rel='tooltip' title='Edit' class='btn btn-white btn-link btn-sm'>
 												<i class='material-icons'>edit</i>
 											</button>

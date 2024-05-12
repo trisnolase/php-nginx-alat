@@ -38,7 +38,7 @@ if ($sesi == "admin") {
 									'$stat',
 									'$upload_gambar')");
 
-		header("Location:../alat-1");
+		header("Location:../../dashboard.php?xlink=view_data/data_alat.php&apage=alat&act=1");
 	} elseif ($modul == 'alat' and $act == 'edit') {
 		$xdimg = empty($_FILES['xgambar']['name']) ? null : $_FILES['xgambar']['name'];
 		$xpid = $_POST['xid'];
@@ -72,11 +72,11 @@ if ($sesi == "admin") {
 			mysqli_query($dblink, "update tblalat set id_kategori='$xkat', id_lokasi='$xlok', nama_peralatan='$xnama' , tahun_beli='$xtgl', desc_alat='$xdesc', jlh_port='$xjp', nama_wifi='$xnwifi', pass_wifi='$xpwifi', frek_alat='$xfrek', l_frek_alat='$xlfrek', k_ram='$xram', k_hardisk='$xdisk', t_processor='$xpro' where id_alat='$xpid'");
 		}
 		if ($cekStatus == 'Normal') {
-			header("Location:../alat-1");
+			header("Location:../../dashboard.php?xlink=view_data/data_alat.php&apage=alat&act=1");
 		} elseif ($cekStatus == 'Rusak Sementara') {
-			header("Location:../alat-2");
+			header("Location:../../dashboard.php?xlink=view_data/data_alat.php&apage=alat&act=2");
 		} else {
-			header("Location:../alat-3");
+			header("Location:../../dashboard.php?xlink=view_data/data_alat.php&apage=alat&act=3");
 		}
 	} elseif ($modul == 'alat' and $act == 'hapus') {
 		$xkid = $_GET['xxid'];
@@ -86,7 +86,7 @@ if ($sesi == "admin") {
 			unlink($target);
 		}
 		mysqli_query($dblink, "delete from tblalat where id_alat='$xkid'");
-		header("Location:alat-1");
+		header("Location:../dashboard.php?xlink=view_data/data_alat.php&apage=alat&act=1");
 	} else {
 		echo "<center>Tidak Ada Modul</center>";
 	}

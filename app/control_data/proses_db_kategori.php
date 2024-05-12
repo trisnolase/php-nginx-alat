@@ -21,7 +21,7 @@ if ($sesi == "admin") {
 		mysqli_query($dblink, "insert into tblkategori values('$_POST[xid]','$_POST[xkat]')");
 		mysqli_query($dblink, "insert into tblbkat(id_kat,a,b,c,d,e,f,g,h) values('$_POST[xid]','$xcjp','$xcnw','$xcpw','$xcfa','$xclf','$xckr','$xckh','$xcpr')");
 
-		header("Location:../kategori");
+		header("Location:../../dashboard.php?xlink=view_data/kategori.php&apage=kategori");
 	} elseif ($modul == 'kategori' and $act == 'edit') {
 		$xpid = $_POST['xid'];
 		$xkat = $_POST['xkat'];
@@ -29,13 +29,13 @@ if ($sesi == "admin") {
 		mysqli_query($dblink, "update tblkategori set nama_kategori='$xkat' where id_kategori='$xpid'");
 		mysqli_query($dblink, "update tblbkat set a='$xcjp',b='$xcnw',c='$xcpw',d='$xcfa',e='$xclf',f='$xckr',g='$xckh',h='$xcpr' where id_kat='$xpid'");
 
-		header("Location:../kategori");
+		header("Location:../../dashboard.php?xlink=view_data/kategori.php&apage=kategori");
 	} elseif ($modul == 'kategori' and $act == 'hapus') {
 		$xkid = $_GET['xxid'];
 		mysqli_query($dblink, "delete from tblkategori where id_kategori='$xkid'");
 		mysqli_query($dblink, "delete from tblbkat where id_kat='$xkid'");
 
-		header("Location:kategori");
+		header("Location:../dashboard.php?xlink=view_data/kategori.php&apage=kategori");
 	} else {
 		echo "<center>Tidak Ada Modul</center>";
 	}

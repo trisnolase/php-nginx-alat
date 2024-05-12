@@ -5,7 +5,7 @@ if ($sesi == "admin") {
 	<div class='col-md-12'>
 		<div class='card'>
 			<div class='card-body'>
-				<a class='btn btn-success btn-sm' href='tambahmutasi'>Mutasi Peralatan</a>
+				<a class='btn btn-success btn-sm' href='dashboard.php?xlink=view_data/tambah/tambah_mutasi.php&apage=mutasi'>Mutasi Peralatan</a>
 			</div>
 		</div>
 	</div>
@@ -83,7 +83,7 @@ if ($sesi == "admin") {
 									$active = "active";
 								}
 							?>
-								<li class="page-item <?php echo $active ?>"><a class="page-link mr-1" href="page-<?php echo $x ?>"><?php echo $x; ?></a></li>
+								<li class="page-item <?php echo $active ?>"><a class="page-link mr-1" href="dashboard.php?xlink=view_data/mutasi_alat.php&apage=mutasi&halaman=-<?php echo $x ?>"><?php echo $x; ?></a></li>
 							<?php
 							}
 							?>

@@ -71,7 +71,7 @@ if ($sesi == "admin") {
 						<ul class="pagination">
 							<li class="page-item">
 								<a class="page-link mr-1" <?php if ($halaman > 1) {
-																echo "href='xpenanganan-$previous'";
+																echo "href='dashboard.php?xlink=view_data/penanganan.php&apage=penanganan&halaman=$previous'";
 															} ?>>Previous</a>
 							</li>
 							<?php
@@ -81,13 +81,13 @@ if ($sesi == "admin") {
 									$active = "active";
 								}
 							?>
-								<li class="page-item <?php echo $active ?>"><a class="page-link mr-1" href="xpenanganan-<?php echo $x ?>"><?php echo $x; ?></a></li>
+								<li class="page-item <?php echo $active ?>"><a class="page-link mr-1" href="dashboard.php?xlink=view_data/penanganan.php&apage=penanganan&halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
 							<?php
 							}
 							?>
 							<li class="page-item">
 								<a class="page-link" <?php if ($halaman < $total_halaman) {
-															echo "href='xpenanganan-$next'";
+															echo "href='dashboard.php?xlink=view_data/penanganan.php&apage=penanganan&halaman=$next'";
 														} ?>>Next</a>
 							</li>
 						</ul>

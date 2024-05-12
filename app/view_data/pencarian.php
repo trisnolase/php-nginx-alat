@@ -60,26 +60,26 @@ if ($sesi == "admin") {
                                 <!-- </ol> -->
                                 <tr>
                                     <td><?php echo $xid ?></td>
-                                    <td><a href='detail-<?php echo $xid ?>'><?php echo $xnama ?></a></td>
+                                    <td><a href='dashboard.php?xlink=view_data/detail_alat.php&apage=alat&id=<?php echo $xid ?>'><?php echo $xnama ?></a></td>
                                     <td><?php echo $xlokasi ?></td>
                                     <td><?php echo $xkategori ?></td>
                                     <td class="text-center"><?php echo date_format(new DateTime($xtahun), 'd M Y'); ?></td>
                                     <td><?php echo $xstatus ?></td>
                                     <td class='td-actions text-center' style="width:96px;">
                                         <?php if ($xhimg == '') { ?>
-                                            <a href='hapusalat-<?php echo $xid ?>&g=<?php echo $xnone ?>' class='btn btn-danger btn-sm'>
+                                            <a href='control_data/proses_db_alat.php?modul=alat&act=hapus&xxid=<?php echo $xid ?>&g=<?php echo $xnone ?>' class='btn btn-danger btn-sm'>
                                                 <button type='button' rel='tooltip' title='Remove' class='btn btn-white btn-link btn-sm'>
                                                     <i class='material-icons'>close</i>
                                                 </button>
                                             </a>
                                         <?php } else { ?>
-                                            <a href='hapusalat-<?php echo $xid ?>&g=<?php echo $xhimg ?>' class='btn btn-danger btn-sm'>
+                                            <a href='control_data/proses_db_alat.php?modul=alat&act=hapus&xxid=<?php echo $xid ?>&g=<?php echo $xhimg ?>' class='btn btn-danger btn-sm'>
                                                 <button type='button' rel='tooltip' title='Remove' class='btn btn-white btn-link btn-sm'>
                                                     <i class='material-icons'>close</i>
                                                 </button>
                                             </a>
                                         <?php } ?>
-                                        <a href='editalat-<?php echo $xid ?>' class='btn btn-primary btn-sm'>
+                                        <a href='dashboard.php?xlink=view_data/edit/edit_alat.php&apage=alat&id=<?php echo $xid ?>' class='btn btn-primary btn-sm'>
                                             <button type='button' rel='tooltip' title='Edit' class='btn btn-white btn-link btn-sm'>
                                                 <i class='material-icons'>edit</i>
                                             </button>

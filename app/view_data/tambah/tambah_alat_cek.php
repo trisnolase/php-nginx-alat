@@ -10,7 +10,7 @@ if ($sesi == "admin") {
 			</div>
 			<div class='card-body'>
 				<div class='table-responsive'>
-					<form name='formCekKategori' method='POST' enctype='multipart/form-data' action='tambahperalatan'>
+					<form name='formCekKategori' method='POST' enctype='multipart/form-data' action='dashboard.php?xlink=view_data/tambah/tambah_alat_kt.php&apage=alat'>
 						<table class='table table-hover'>
 							<tr>
 								<td width='200px'>Kategori</td>
