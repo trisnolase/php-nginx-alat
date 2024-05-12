@@ -1,6 +1,6 @@
 <?php
 	$db_host        = "db";
-    $db_user        = "alat";
+    $db_user        = "root";
     $db_pass        = "mypass";
     $db_database    = "dbinventarisperalatan"; 
     

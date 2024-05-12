@@ -21,26 +21,33 @@ services:
 
     networks:
       - alat
-  db:
-    image: mariadb:10.11
-    container_name: mdb1011
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: mariadb
-      MYSQL_DATABASE: dbinventarisperalatan
-      MYSQL_USER: alat
-      MYSQL_PASSWORD: mypass
-    ports:
-      - "3308:3306"
-    volumes:
-    - mdb-data:/var/lib/mysql
-    
-    networks:
-      - alat
-
-volumes:
-  mdb-data:
 
 networks:
   alat:
-    driver: bridge
+    # name: db_service didapat dari compose/container lain dengan nama networknya adalah db_service
+    # jadi kalau disini hanya menggunakan networknya sana
+    # tanpa harus membuat netwrok baru
+    name: db_service
+    external: true
+
+# tidak perlu lagi untuk membuat service database sendiri
+# jika telah ada network penghubung
+# karena untuk databasenya ada di container lain
+
+  # db:
+  #   image: mariadb:10.11.7
+  #   container_name: mdb1011
+  #   restart: unless-stopped
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: mariadb
+  #     MYSQL_DATABASE: dbinventarisperalatan
+  #     MYSQL_USER: alat
+  #     MYSQL_PASSWORD: mypass
+  #   ports:
+  #     - "3308:3306"
+  #   volumes:
+  #   - mdb-data:/var/lib/mysql
+    
+# volumes:
+#   mdb-data:
+#     driver: bridge
