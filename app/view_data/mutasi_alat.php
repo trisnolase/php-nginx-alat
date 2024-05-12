@@ -1,18 +1,23 @@
 <?php
-	echo"<div class='col-md-12'>
-	<div class='card'>
-		<div class='card-body'>
-			<table border='0' cellpadding='0' width='100%'>
-			<tr>
-				<td><a class='btn btn-success btn-sm' href='index.php?xlink=control_data/tambah_mutasi.php&page=mutasi'>Mutasi Peralatan</a><td>
-				</tr></table></div></div></div>";
-	$sql = mysqli_query($dblink,"SELECT * from tblhistorilokasi,tblalat,tbllokasi WHERE tblhistorilokasi.id_alat=tblalat.id_alat AND tbllokasi.id_lokasi=tblalat.id_lokasi AND tblhistorilokasi.id_lokasi_b<>'' order by tblhistorilokasi.id_alat desc, tblhistorilokasi.id_histori DESC");
-	echo"<div class='col-md-12'>
-			<div class='card'>
-				<div class='card-header card-header-primary'>
-					<h4 class='card-title '>Mutasi</h4>
-					<p class='card-category'> List Data</p>
-				</div>
+$sesi = isset($_SESSION['role']) ? $_SESSION['role'] : '';
+if ($sesi == "admin") {
+?>
+	<div class='col-md-12'>
+		<div class='card'>
+			<div class='card-body'>
+				<a class='btn btn-success btn-sm' href='tambahmutasi'>Mutasi Peralatan</a>
+			</div>
+		</div>
+	</div>
+	<?php
+	// $sql = mysqli_query($dblink, "SELECT * from histori_lokasi_view order by id_histori desc");
+	?>
+	<div class='col-md-12'>
+		<div class='card'>
+			<div class='card-header card-header-primary'>
+				<h4 class='card-title '>Mutasi</h4>
+				<p class='card-category'> List Data</p>
+			</div>
 			<div class='card-body'>
 				<div class='table-responsive'>
 					<table class='table table-hover'>
@@ -22,33 +27,80 @@
 							<th>Lokasi Awal</th>
 							<th>Lokasi Mutasi</th>
 							<th>Tanggal Mutasi</th>
-					</thead>
-				<tbody>";
-		while ($r=mysqli_fetch_array($sql,MYSQLI_ASSOC)){
-			$xidal = isset($r['id_alat']) ? $r['id_alat'] : '';
-			$xnal = isset($r['nama_peralatan']) ? $r['nama_peralatan'] : '';
-			$xidla = isset($r['id_lokasi_a']) ? $r['id_lokasi_a'] : '';
-			$xidlb = isset($r['id_lokasi_b']) ? $r['id_lokasi_b'] : '';
-			$xla = isset($r['nama_lokasi']) ? $r['nama_lokasi'] : '';
-			$xtglm = isset($r['tgl']) ? $r['tgl'] : '';
-			
-			$xsql=mysqli_query($dblink,"SELECT * from tbllokasi where id_lokasi='$xidla'");
-			while ($xr=mysqli_fetch_array($xsql,MYSQLI_ASSOC)){
-				$xnmla = isset($xr['nama_lokasi']) ? $xr['nama_lokasi'] : '';
-			}
-			
-			$dsql=mysqli_query($dblink,"SELECT * from tbllokasi where id_lokasi='$xidlb'");
-			while ($dr=mysqli_fetch_array($dsql,MYSQLI_ASSOC)){
-				$xnmlb = isset($dr['nama_lokasi']) ? $dr['nama_lokasi'] : '';
-			}
-			
-		echo"<tr>
-				<td class='text-center'>$xidal</td>
-				<td>$xnal</td>
-				<td>$xnmla</td>
-				<td>$xnmlb</td>
-				<td>$xtglm</td>
-			</tr>";
-		}
-		echo"</tbody></table></div></div></div>";
-?>
+						</thead>
+						<tbody>
+							<?php
+
+							// =====================================================================
+
+							$batas = 5;
+							$halaman = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
+							$halaman_awal = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;
+
+							$previous = $halaman - 1;
+							$next = $halaman + 1;
+
+							$data = mysqli_query($dblink, "SELECT * from histori_lokasi_view");
+							$jumlah_data = mysqli_num_rows($data);
+							$total_halaman = ceil($jumlah_data / $batas);
+
+							$query = mysqli_query($dblink, "SELECT * from histori_lokasi_view order by id_histori desc limit $halaman_awal, $batas");
+							$nomor = $halaman_awal + 1;
+
+							// =====================================================================
+
+							while ($r = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+								$xidal = isset($r['id_alat']) ? $r['id_alat'] : '';
+								$xnal = isset($r['nama_peralatan']) ? $r['nama_peralatan'] : '';
+								$xnmla = isset($r['nama_lokasi_a']) ? $r['nama_lokasi_a'] : '';
+								$xnmlb = isset($r['nama_lokasi_b']) ? $r['nama_lokasi_b'] : '';
+								$xtglm = isset($r['tgl']) ? $r['tgl'] : '';
+							?>
+								<tr>
+									<td class='text-center'><?php echo $xidal ?></td>
+									<td><?php echo $xnal ?></td>
+									<td><?php echo $xnmla ?></td>
+									<td><?php echo $xnmlb ?></td>
+									<td class="text-center"><?php echo date_format(new DateTime($xtglm), 'd M Y'); ?></td>
+								</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+
+					<!-- ===================================================================== -->
+
+					<nav>
+						<ul class="pagination">
+							<li class="page-item">
+								<a class="page-link mr-1" <?php if ($halaman > 1) {
+																echo "href='page-$previous'";
+															} ?>>Previous</a>
+							</li>
+							<?php
+							for ($x = 1; $x <= $total_halaman; $x++) {
+								$active = '';
+								if ($x == $halaman) {
+									$active = "active";
+								}
+							?>
+								<li class="page-item <?php echo $active ?>"><a class="page-link mr-1" href="page-<?php echo $x ?>"><?php echo $x; ?></a></li>
+							<?php
+							}
+							?>
+							<li class="page-item">
+								<a class="page-link" <?php if ($halaman < $total_halaman) {
+															echo "href='page-$next'";
+														} ?>>Next</a>
+							</li>
+						</ul>
+					</nav>
+
+					<!-- ===================================================================== -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+<?php } else {
+	echo "<center>Silakan login untuk akses data</center";
+} ?>
