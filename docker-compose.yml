@@ -1,6 +1,7 @@
 services:
   nginx:
     container_name: nginx
+    image: nginx:1.26.0
     build: ./nginx/
     ports:
       - 83:80
@@ -13,6 +14,7 @@ services:
 
   php:
     container_name: php
+    image: php:8.3.7-fpm
     build: ./app/
     expose:
       - 9000
@@ -24,10 +26,8 @@ services:
 
 networks:
   alat:
-    # name: db_service didapat dari compose/container lain dengan nama networknya adalah db_service
-    # jadi kalau disini hanya menggunakan networknya sana
-    # tanpa harus membuat netwrok baru
-    name: db_service
+    # mdb10117_service didapat dari compose/container lain dengan nama networknya adalah mdb10117_service
+    name: mdb10117_service
     external: true
 
 # tidak perlu lagi untuk membuat service database sendiri

@@ -6,7 +6,7 @@
     
     $dblink = mysqli_connect($db_host,$db_user,$db_pass,$db_database);
 
-    if (mysqli_connect_errno()){
+    if (!$dblink){
         echo "Koneksi database gagal : " . mysqli_connect_error();
         exit();
     }
